@@ -1,0 +1,129 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"> -->
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+
+label, input {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#login-message, #signup-message {
+    text-align: center;
+    margin-top: 20px;
+    color: red;
+}
+
+    </style>
+</head>
+<body>
+    <form id="signup-form">
+        <input type="text" id="first_name" placeholder="First Name" required>
+        <input type="text" id="last_name" placeholder="Last Name" required>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="re_password" placeholder="Re-enter Password" required>
+        <button type="submit">Signup</button>
+        <p id="signup-message"></p>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            async function signupUser(event) {
+                event.preventDefault();
+
+                const username = document.getElementById('username').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const re_password = document.getElementById('re_password').value.trim();
+                const first_name = document.getElementById('first_name').value.trim();
+                const last_name = document.getElementById('last_name').value.trim();
+                const signupMessage = document.getElementById('signup-message');
+
+                // Reset signup message
+                signupMessage.textContent = '';
+                signupMessage.style.color = 'initial';
+
+                // Basic validation
+                if (!username || !email || !password || !re_password || !first_name || !last_name) {
+                    signupMessage.textContent = "All fields are required!";
+                    signupMessage.style.color = 'red';
+                    return;
+                }
+
+                if (password !== re_password) {
+                    signupMessage.textContent = "Passwords do not match!";
+                    signupMessage.style.color = 'red';
+                    return;
+                }
+
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/auth/register/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username,
+                            email,
+                            password,
+                            password2: re_password,  // Include password2 in the payload
+                            first_name,
+                            last_name
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        console.error('Signup error:', data);
+                        const errorMessage = data.detail || 'Signup failed!';
+                        throw new Error(errorMessage);
+                    }
+
+                    signupMessage.textContent = 'Signup successful! You can now log in.';
+                    signupMessage.style.color = 'green';
+                } catch (error) {
+                    console.error('An error occurred:', error);
+                    signupMessage.textContent = error.message;
+                    signupMessage.style.color = 'red';
+                }
+            }
+
+            const signupForm = document.getElementById('signup-form');
+            if (signupForm) {
+                signupForm.addEventListener('submit', signupUser);
+            } else {
+                console.error('Signup form not found.');
+            }
+        });
+    </script>
+</body>
+</html>

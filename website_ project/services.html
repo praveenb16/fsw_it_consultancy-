@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>IT Consultancy Home</title>
+</head>
+<style>
+body{
+   
+    background-image: url('/assests/images/itt.jpg');
+    background-size: cover;
+    }
+
+    table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #b27564;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+         }
+        .my-blog{
+        margin-left: 85%;
+        margin-right: 10px;
+        border: 1px solid rgb(102, 57, 207);
+        background-color:#1ab2dc;
+        color: rgb(10, 14, 15);
+        padding: 5px;
+       
+    }
+    .my-blog a{
+        color: rgb(15, 18, 19) ;
+        padding: 20px;
+    }
+</style>
+<body style="margin: 0; font-family: Arial, sans-serif;">
+
+    <!-- Header Section -->
+    <header style="background-color: #5d8fc1; color: white; padding: 20px; text-align: center;">
+        <h1 style="margin: 0;">our Services</h1>
+        
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" style="background-color: #f4f4f4; padding: 10px 10px; text-align: center;transition: transform 0.3s, box-shadow 0.3s;">
+        
+        <p style="margin: 20px 0; font-size: 18px;">We provide expert IT consulting services to help your business succeed!!</p>
+        <a href="#services" style="background-color:#5d8fc1; color: white; padding: 5px 5px; text-decoration: none; border-radius: 5px;">Our Services</a>
+   
+
+    <div class="my-blog">
+        <a href="serivesform.html">new Service:</a>
+        </div>
+</section>
+    <!-- Services Section -->
+    <section id="services" style="padding: 50px 20px; text-align: center;transition: transform 0.3s, box-shadow 0.3s;">
+       
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <div  style="flex: 1; min-width: 250px; max-width: 300px; background-color: #e6f7ff; padding: 20px; margin: 10px; border-radius: 10px;">
+                <h3 style="margin: 0 0 10px;">IT Consulting</h3>
+                <img src="https://img.freepik.com/free-photo/business-man-financial-inspector-secretary-making-report-calculating-checking-balance-internal-revenue-service-inspector-checking-document-audit-concept_1423-126.jpg?t=st=1717841799~exp=1717845399~hmac=c5e461e0d8e206fa5ff97bbc2eeafc27e8605cc9a34468a6289ab966b794cf7f&w=996" alt="" width="300" height="220">
+                <p style="margin: 0;">Expert advice to help you choose the right technology solutions.</p>
+                <p style="margin: 0;"><br><b>Key Benefits and features:</b><br>•Expertise and specialization<br>•Enhanced Security<br>•Strategic Planning<br>•Cost Saving</p>
+
+            </div>
+          
+            <div style="flex: 1; min-width: 250px; max-width: 300px; background-color: #e6f7ff; padding: 20px; margin: 10px; border-radius: 10px;">
+                <h3 style="margin: 0 0 10px;">Network Services</h3>
+                <img src="https://img.freepik.com/free-vector/endpoint-concept-illustration_114360-2723.jpg?t=st=1717842043~exp=1717845643~hmac=78bcd9721437aae8e9295285f5525069d4aa11d6eb7be163bc07fd901248d107&w=740" alt="" width="300" height="220">
+                <p style="margin: 0;">Reliable and secure network setup and maintenance.</p>
+                <p style="margin: 0;"><br><b>Key Benefits and features:</b><br>•Flexibility and Scalability<br>•Bundeled with Security<br>•Access from Anywhere<br>•Cost Saving</p>
+            </div> 
+            
+            </style>
+            <div style="flex: 1; min-width: 250px; max-width: 300px; background-color: #e6f7ff; padding: 20px; margin: 10px; border-radius: 10px;">
+                <h3 style="margin: 0 0 10px;">Cloud Solutions</h3>
+                <img src="https://img.freepik.com/premium-photo/flat-vector-business-technology-storage-cloud-3d-illustration_1029679-25626.jpg?w=1380" alt="" width="300" height="220">
+                <p style="margin: 0;">Scalable and cost-effective cloud computing services.</p>
+                <p style="margin: 0;"><br><b>Key Benefits and features:</b><br>•Collaboration and Accessability<br>•Enhanced Data Security<br>•Flexible Scalability<br>•Cost Saving</p>
+            </div>
+        </div>
+     </section>
+     <br>
+     <div id="data-table">
+        <h2 style="text-align: center;">our new Services</h2>
+        <table id="servicesTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Benefits</th>
+                    <th>Features</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Submitted data will be appended here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Fetch existing data and populate the table
+        fetch('http://127.0.0.1:8000/services/')
+            .then(response => response.json())
+            .then(data => {
+                const table = document.getElementById('servicesTable').getElementsByTagName('tbody')[0];
+                data.forEach(service => {
+                    const newRow = table.insertRow();
+    
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    const cell3 = newRow.insertCell(2);
+                    const cell4 = newRow.insertCell(3);
+    
+                    cell1.textContent = service.name;
+                    cell2.textContent = service.description;
+                    cell3.textContent = service.benefits;
+                    cell4.textContent = service.features;
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+
+    <!-- <style>
+     #contact-form {
+        width: 50%;
+        background-color: rgba(211, 210, 210, 0.3);
+        padding: 10px;
+        margin-top: 50px;
+        border-radius: 10px;
+        margin-left: 25%;
+        padding: 1em;
+        width: 40%;
+        margin: auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #contact-form h2 {
+        font-size: 2em;
+        background-color: #e2dcdc88;
+        color: #090909;
+        margin-bottom: 10px;
+    }
+
+    form {
+        text-align: left;
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+    form label {
+        display: block;
+        font-size: 1.1em;
+        color: #030000;
+        margin-bottom: 5px;
+
+    }
+
+    form input[type="text"] {
+        width: 100%;
+        height: 50%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #b0afaf;
+        border-radius: 5px;
+        background-color: #fdfbfb8b;
+    }
+
+    form textarea {
+        width: 95%;
+        height: 90px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #b0afaf;
+        border-radius: 5px;
+        background-color: #fdfbfb8b;
+    }
+
+    form input[type="submit"] {
+        background-color: #086dd2;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    form input[type="submit"]:hover {
+        background-color:#0272e3;
+        text-align: center;
+    }
+    </style>
+    <div id="contact-form">
+        <h3 style="text-align: center; font-size: x-large;"><b>Services</b></h3>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="text">Description:</label>
+            <textarea id="Description" name=""></textarea>
+            <label for="text">Benifits:</label>
+            <input type="text" id="email" name="">
+            <label for="text">Features:</label>
+            <input type="text" id="email" name=""><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <br>
+    <br> -->
+
+    
+
+
+
+    <!-- Footer Section -->
+    <footer id="contact" style="background-color: #5d8fc1; color: white; padding: 20px; text-align: center;">
+        <p style="margin: 0;">&copy; 2024 IT Consultancy Services</p>
+        <p style="margin: 5px 0;">Email: info@itconsultancy.com | Phone: (123) 456-7890</p>
+    </footer>
+
+
+</body>
+</html>

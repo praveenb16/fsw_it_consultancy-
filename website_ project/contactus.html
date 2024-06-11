@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <style>
+      .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #f4511e;
+        border: none;
+        color: #ffffff;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+      }
+
+      .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+
+      .button span:after {
+        content: "\00bb";
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+
+      .button:hover span {
+        padding-right: 25px;
+      }
+
+      .button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+      .container {
+        position: relative;
+        width: 100%;
+      }
+
+      .image {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: 0.5s ease;
+        backface-visibility: hidden;
+      }
+
+      .middle {
+        transition: 0.5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      .container:hover .image {
+        opacity: 0.3;
+        background-color: plural;
+      }
+
+      .container:hover .middle {
+        opacity: 1;
+      }
+
+      .text {
+        background-color: #04aa6d;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <h1 class="sah">CONTACT US</h1>
+
+      
+    <div class="container">
+      
+      <div class="middle">
+        <div class="text">HI....!<br />how can i help you</div>
+      </div>
+    </div>
+    <h1 style="background-color: powderblue; text-align: center">
+      I’m Looking For
+    </h1>
+    <h2 style="padding-left: 25px; text-align: center">
+      Please share your queries by completing the form below. We will reply to
+      you shortly.
+    </h2>
+    <form><body>
+      
+      <form id="myForm">
+      <label for="name">Fname:</label>
+      <input type="text" id="name" name="Fname" required><br>
+      <div>
+        <label for="name">Lname:</label>
+        <input type="text" id="name" name="Lname" required><br>
+      </div>
+      <div>
+          <label for="email">Email:</label>
+          <input type="text" id="name" email="email" required><br>
+      </div>
+      <div>
+          <label for="email">Phone Number:</label>
+          <input type="text" id="name" phonenumber="Phone Number" required><br>
+      </div>
+      <div class="btn">
+          <label for="queries">Queries:</label>
+          <input type="text" id="name" message="message" required><br>
+      </div>
+      <button type="submit">Submit</button>
+      
+    </form>
+      
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+              background-color: #f0f0f0;
+              padding: 20px;
+            }
+            
+           form {
+              width: 300px;
+              margin: 0 auto;
+              text-align: center;
+              padding: 50px;
+              background-color: rgba(255, 255, 255, 0.5);
+              border-radius: 10px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            }
+            .btn{
+              width: 300px;
+              padding: 10px;
+  
+            }
+            
+           * label {
+              display: block;
+              margin-bottom: 10px;
+            }
+            
+            input[type="text"] {
+              width: 100%;
+              padding: 10px;
+              margin: 10px 0;
+              border: 1px solid #ccc;
+              border-radius: 0px;
+            }
+            
+            button {
+              background-color:black;
+              color: #fff;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+            
+            button:hover {
+              background-color:black;
+            }
+      </style>
+
+    </form>
+   
+    
+  
+    <style>
+        
+    </style>
+
+    <script src="" async defer></script>
+  </body>
+</html>
